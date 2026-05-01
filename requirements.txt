@@ -1,8 +1,7 @@
 # Nutrition Calculator - Python Dependencies
 # Install with: pip install -r requirements.txt
 
-# Core dependencies
-gradio>=4.0.0
+# Core dependencies (gradio removed — GUI is now Tkinter)
 pandas>=2.0.0
 numpy>=1.24.0
 

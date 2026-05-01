@@ -1,128 +1,89 @@
-# 🍽️ Nutrition Calculator - Interactive Meal Nutrition Analysis
+# 🍽️ Meal Nutrition Calculator — Samsung Health
 
-A Google Colab-ready nutrition calculator with an interactive web-based GUI built using Gradio. Calculate the complete nutritional breakdown of your meals instantly!
+A desktop GUI app for calculating the complete nutritional breakdown of your meals, with results displayed in **Samsung Health's field order** so you can quickly log food via the "Add custom food" screen.
 
 ## ✨ Features
 
-- **Interactive Web Interface**: Easy-to-use Gradio GUI that runs directly in your browser
-- **Comprehensive Nutrition Database**: 19 common ingredients with complete nutritional data
-- **15 Nutritional Values Tracked**:
-  - Calories, Carbohydrates, Fat, Protein
-  - Saturated Fat, Trans Fat, Cholesterol
-  - Sodium, Potassium, Dietary Fiber, Sugar
-  - Vitamins A & C, Calcium, Iron
-- **Real-time Calculations**: Instant total nutritional breakdown as you enter quantities
-- **Shareable**: Generate public links to share with others
-- **No Installation Required**: Runs instantly in Google Colab
+- **Native Desktop GUI**: Standalone Tkinter window, no browser or internet needed
+- **Samsung Health optimized**: Results panel matches Samsung Health's "Add custom food" field order exactly
+- **19 ingredients** with complete nutritional data, integer gram inputs
+- **15 nutritional values tracked**: Calories, Carbohydrates, Fat, Protein, Saturated Fat, Trans Fat, Cholesterol, Sodium, Potassium, Dietary Fiber, Sugar, Vitamins A & C, Calcium, Iron
+- **Zero extra dependencies**: Only `numpy` required (Tkinter is built into Python)
 
-## 🚀 Quick Start (Google Colab)
+## 🚀 Quick Start
 
-### Option 1: Direct Upload
-1. Go to [Google Colab](https://colab.research.google.com/)
-2. Click **File → Upload notebook**
-3. Upload `nutrition_calculator.ipynb` from this repository
-4. Click **Runtime → Run all**
-5. Click the Gradio link that appears
-6. Start calculating!
-
-### Option 2: From GitHub
-1. Open [Google Colab](https://colab.research.google.com/)
-2. Click **File → Open notebook → GitHub**
-3. Enter: `HosseinBeheshti/nutrition`
-4. Select `nutrition_calculator.ipynb`
-5. Click **Runtime → Run all**
-
-## 📊 Available Ingredients
-
-The calculator includes these ingredients (with their standard units):
-
-| Category | Ingredients |
-|----------|-------------|
-| **Grains** | Raw Rice (100g), Macaroni (100g), Flour/Sugar (100g) |
-| **Proteins** | Meat (100g), Chicken/Turkey (100g), Salmon (100g), Shrimp (100g), Sausage (100g) |
-| **Legumes** | Split Peas (100g), Lentils (100g), Beans/Chickpeas (100g) |
-| **Dairy** | Egg (1 unit), Cheese (100g) |
-| **Vegetables** | Onion (100g), Potato (100g), Herbs/Veg (10g) |
-| **Others** | Oil (1 tbsp), Paste/Tomato (1 tbsp), Nuts (100g) |
+```bash
+git clone https://github.com/HosseinBeheshti/nutrition.git
+cd nutrition
+pip install -r requirements.txt
+python3 nutrition_app.py
+```
 
 ## 💡 How to Use
 
-1. **Run the notebook** - Execute all cells in Google Colab
-2. **Open the GUI** - Click the generated Gradio link
-3. **Enter quantities** - Input how much of each ingredient you used
-   - Use whole numbers for units (e.g., `2` for 2×100g of rice)
-   - Use decimals for partial amounts (e.g., `0.5` for half a tablespoon of oil)
-4. **View results** - See instant nutritional breakdown in the output table
+1. **Enter quantities** — type grams (or count for eggs/oil) for each ingredient you used
+2. **Click Calculate** — results update instantly in the right panel
+3. **Log to Samsung Health** — open Samsung Health → Food → **+** → "Add custom food" and copy each field from the results panel
+4. **Click Reset** to start a new meal
 
-### Example Meals
+### Example: Rice & Chicken meal
 
-**Simple Rice & Chicken:**
-- Raw Rice: `1.5` (150g)
-- Chicken/Turkey: `2` (200g)
-- Oil: `2` (2 tbsp)
-- Onion: `0.5` (50g)
-- Herbs/Veg: `1` (10g)
+| Ingredient | Amount |
+|---|---|
+| Raw Rice | 150 g |
+| Chk/Turkey | 200 g |
+| Oil | 2 tbsp |
+| Onion | 50 g |
 
-**Pasta with Cheese:**
-- Macaroni: `2` (200g)
-- Cheese: `0.5` (50g)
-- Oil: `1` (1 tbsp)
-- Paste/Tomato: `1` (1 tbsp)
+## 📊 Nutrition Database
 
-## 🛠️ Local Development
+All values are per the listed standard unit. Sources: USDA FoodData Central and standard food labels.
 
-If you want to run this locally instead of in Colab:
+| Ingredient | Unit | Cal | Carbs | Fat | Protein | Sat.Fat | Trans Fat | Chol | Na | K | Fiber | Sugar | Vit.A | Vit.C | Ca | Fe |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Raw Rice | 100g | 360 | 79.5 | 0.6 | 7.0 | 0.1 | 0 | 0 | 1 | 110 | 1.0 | 0.1 | 0 | 0 | 0 | 1 |
+| Meat | 100g | 250 | 0 | 17.0 | 25.0 | 6.5 | 0 | 75 | 75 | 300 | 0 | 0 | 0 | 0 | 0 | 10 |
+| Chk/Turkey | 100g | 165 | 0 | 3.6 | 31.0 | 1.0 | 0 | 85 | 70 | 450 | 0 | 0 | 0 | 0 | 0 | 4 |
+| Salmon | 100g | 208 | 0 | 13.0 | 22.0 | 3.0 | 0 | 60 | 60 | 490 | 0 | 0 | 2 | 0 | 0 | 5 |
+| Shrimp | 100g | 130 | 0 | 2.5 | 25.0 | 0.5 | 0 | 200 | 100 | 200 | 0 | 0 | 0 | 0 | 1 | 10 |
+| Oil | 1 tbsp | 120 | 0 | 13.5 | 0 | 2.0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Split Peas | 100g | 360 | 60.3 | 1.0 | 24.5 | 0.2 | 0 | 0 | 15 | 960 | 25.0 | 5.0 | 0 | 0 | 1 | 40 |
+| Lentils | 100g | 350 | 60.1 | 1.0 | 25.0 | 0.2 | 0 | 0 | 5 | 900 | 30.0 | 2.0 | 0 | 0 | 1 | 37 |
+| Beans/Chickpeas | 100g | 350 | 63.0 | 6.0 | 20.0 | 0.6 | 0 | 0 | 20 | 870 | 17.0 | 11.0 | 0 | 0 | 1 | 37 |
+| Egg | 1 unit | 70 | 0.6 | 5.0 | 6.0 | 1.5 | 0 | 185 | 70 | 70 | 0 | 0.3 | 4 | 0 | 2 | 5 |
+| Onion | 100g | 40 | 9.3 | 0.1 | 1.1 | 0 | 0 | 0 | 4 | 145 | 1.7 | 4.2 | 0 | 10 | 2 | 1 |
+| Paste/Tomato | 1 tbsp | 20 | 4.8 | 0.1 | 1.0 | 0 | 0 | 0 | 60 | 160 | 1.0 | 3.0 | 5 | 10 | 1 | 4 |
+| Herbs/Veg | 100g | 30 | 6.0 | 0.5 | 3.0 | 0.1 | 0 | 0 | 25 | 300 | 3.0 | 1.0 | 20 | 10 | 5 | 15 |
+| Macaroni | 100g | 370 | 74.0 | 1.5 | 13.0 | 0.5 | 0 | 0 | 5 | 150 | 3.0 | 1.0 | 0 | 0 | 1 | 8 |
+| Cheese | 100g | 350 | 3.1 | 29.0 | 25.0 | 18.0 | 0 | 100 | 620 | 90 | 0 | 0.5 | 10 | 0 | 72 | 1 |
+| Nuts | 100g | 650 | 21.0 | 56.0 | 22.0 | 4.5 | 0 | 0 | 1 | 700 | 12.0 | 4.0 | 0 | 0 | 7 | 15 |
+| Potato | 100g | 75 | 17.5 | 0.1 | 2.0 | 0 | 0 | 0 | 6 | 420 | 2.0 | 0.8 | 0 | 30 | 0 | 3 |
+| Flour/Sugar | 100g | 400 | 83.0 | 1.0 | 10.0 | 0.3 | 0 | 0 | 1 | 100 | 3.0 | 0.2 | 0 | 0 | 1 | 10 |
+| Sausage | 100g | 300 | 1.0 | 28.0 | 12.0 | 10.0 | 0 | 60 | 800 | 200 | 0 | 1.0 | 0 | 0 | 1 | 5 |
 
-```bash
-# Clone the repository
-git clone https://github.com/HosseinBeheshti/nutrition.git
-cd nutrition
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run as a Python script (optional - can also use Jupyter)
-python -c "$(cat nutrition_calculator.ipynb | jq -r '.cells[].source | join("")')"
-```
+> Units: Cal = kcal · Carbs/Fat/Protein/Sat.Fat/Trans.Fat/Fiber/Sugar = g · Chol/Na/K = mg · Vit.A/C/Ca/Fe = % Daily Value
 
 ## 📦 Dependencies
 
-- `gradio` - Web-based GUI framework
-- `pandas` - Data manipulation and calculations
-- `numpy` - Numerical operations
-
-All dependencies are automatically installed when you run the notebook in Colab.
+- `numpy` — vectorized calculation
+- `tkinter` — GUI (built into Python, no install needed)
 
 ## 🎯 Technical Details
 
-- **Calculation Method**: Vectorized matrix multiplication for efficiency
-- **Data Structure**: Pandas DataFrame for easy manipulation
-- **GUI Framework**: Gradio for instant web interface deployment
-- **Precision**: All values rounded to 1 decimal place
-- **Input Validation**: Negative values automatically reset to 0
+- **Calculation**: dot product of quantity vector × nutrition matrix (`numpy`)
+- **GUI**: Tkinter — no server, no browser, works offline
+- **Input**: integer grams for 100g-based items; count for eggs; tablespoons for oil and paste
+- **Precision**: calories displayed as integers, all other values rounded to 1 decimal
 
 ## 📝 Notes
 
-- All nutritional values are per standard unit (100g, 1 tbsp, 1 unit, etc.)
-- Vitamin and mineral percentages are based on Daily Values (DV)
-- The database can be easily extended by adding more ingredients to the `NUTRITION_DATA` dictionary
-- Fractional quantities are supported for precise measurements
-
-## 🤝 Contributing
-
-Feel free to:
-- Add more ingredients to the database
-- Suggest additional nutritional values to track
-- Improve the UI/UX
-- Report issues or bugs
-
-## 📄 License
-
-This project is open source and available for personal and educational use.
+- Vitamin and mineral values are % Daily Value (DV) per standard unit
+- Extend the database by adding rows to `NUTRITION_DATA` in `nutrition_app.py`
+- The original Gradio notebook (`nutrition_calculator.ipynb`) is kept as a reference
 
 ## 🙏 Acknowledgments
 
-Nutritional data compiled from standard USDA food composition databases and common food labels.
+Nutritional data compiled from USDA FoodData Central and standard food labels.
 
 ---
 
